@@ -20,4 +20,7 @@ public class Constant {
     public static final byte GMAE_RE_START = 0x1; //游戏重新开始
     public static final byte SELECT_PIECES = 0x2; //选中要移动到棋子
     public static final byte MOVE_PIECES   = 0x3; //移动棋子到新位置
+
+    public static float PIECES_SIZE; //棋子正常尺寸
+    public static float PIECES_SELECT_SIZE; //棋子选中尺寸
 }
