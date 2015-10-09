@@ -34,8 +34,10 @@ public class CanvasUtils {
     public void initBitmap(Context ctx){
         btnStart = ImgUtils.getInstance().getBitmapFromRes(ctx, R.mipmap.start);
         btnReStart = ImgUtils.getInstance().getBitmapFromRes(ctx,R.mipmap.re_start);
-        piecesBlcak = ImgUtils.getInstance().getBitmapFromRes(ctx,R.mipmap.pieces_black);
-        piecesRed = ImgUtils.getInstance().getBitmapFromRes(ctx,R.mipmap.pieces_red);
+
+        piecesRed = ImgUtils.getInstance().getBitmapFromRes(ctx, R.mipmap.pieces_red);
+        piecesBlcak = ImgUtils.getInstance().getBitmapFromRes(ctx, R.mipmap.pieces_black);
+        Constant.PIECES_SIZE = piecesBlcak.getWidth();
     }
 
     /**
@@ -135,21 +137,20 @@ public class CanvasUtils {
     public void initPieces(Paint paint, Canvas canvas) {
         for (int i = 0; i < 3; i++) {
             canvas.drawBitmap(piecesBlcak,
-                    mChessBoard.get(i).getX() - piecesBlcak.getWidth() / 2,
-                    mChessBoard.get(i).getY() - piecesBlcak.getHeight() / 2,
+                    mChessBoard.get(i).getX() - Constant.PIECES_SIZE / 2,
+                    mChessBoard.get(i).getY() - Constant.PIECES_SIZE / 2,
                     paint);
             mChessBoard.get(i).setHasPieces(true);
             mChessBoard.get(i).setPiecesType(Ponint.PIECES_BLACK);
+
             canvas.drawBitmap(piecesRed,
-                    mChessBoard.get(i + 6).getX() - piecesRed.getWidth() / 2,
-                    mChessBoard.get(i + 6).getY() - piecesRed.getHeight() / 2,
+                    mChessBoard.get(i + 6).getX() - Constant.PIECES_SIZE / 2,
+                    mChessBoard.get(i + 6).getY() - Constant.PIECES_SIZE / 2,
                     paint);
             mChessBoard.get(i + 6).setHasPieces(true);
             mChessBoard.get(i + 6).setPiecesType(Ponint.PIECES_RED);
         }
     }
-
-
 
     public byte getEventOption(float x, float y) {
         byte rs = -1;
